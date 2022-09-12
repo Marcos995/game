@@ -20,7 +20,11 @@
         background-image: linear-gradient(to bottom, rgb(0,0,255),rgb(230, 242, 255));
       }
       #nuvem{
-        height:100px;
+        height:110px;
+        width:300px;
+        margin-top:30px;
+        position:absolute;
+        animation:nuvem 17s infinite linear;
       }
       #cano{
         position: absolute;
@@ -50,11 +54,22 @@
         0%{
           bottom:0px;
         }
+        50%{
+          bottom:70px;
+        }
         60%{
           bottom:70px;
         }
         100%{
           bottom:0px;
+        }
+      }
+      @keyframes nuvem {
+        0%{
+          right:-300px;
+        }
+        100%{
+          right:100%;
         }
       }
     </style>
