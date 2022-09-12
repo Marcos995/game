@@ -54,10 +54,10 @@
         0%{
           bottom:0px;
         }
-        50%{
+        30%{
           bottom:70px;
         }
-        60%{
+        70%{
           bottom:70px;
         }
         100%{
@@ -78,21 +78,32 @@
     <div id="tela">
       <img id="cano" src="cano.png">
       <img id="mario" src="mario.gif">
-      <img id="nuvem" src="nuvem.png"
+      <img id="nuvem" src="nuvem.png">
     </div>
+    <p></p>
     <script>
       let body = document.getElementsByTagName("body")
+      let mario=document.getElementById("mario")
       body[0].addEventListener("click",pular)
       function pular(){
-        let mario=document.getElementById("mario")
         mario.classList.add("pulo")
         body[0].removeEventListener("click",pular)
-        console.log(1)
         setTimeout(remover,700)
         function remover(){
-          console.log(2)
           mario.classList.remove("pulo")
           body[0].addEventListener("click",pular)
+        }
+      }
+      let p = document.getElementsByTagName("p")[0]
+      setInterval(game,1000/30)
+      function game(){
+        let canoPosition =+getComputedStyle(cano).right.replace("px"," ")
+        let marioPosition=+getComputedStyle(mario).bottom.replace("px"," ")
+        p.innerHTML = canoPosition+" "+marioPosition
+        if(canoPosition>320 && canoPosition<360 && marioPosition<50){
+          p.innerHTML = canoPosition+" "+marioPosition+" bateu"
+          cano.style.animation="none"
+          cano.style.right=canoPosition+"px"
         }
       }
     </script>
