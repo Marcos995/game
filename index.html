@@ -4,17 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-      
+      *{
+        margin:0px;
+        padding:0px;
+        box-sizing: border-box;
+      }
+      #tela{
+        border:1px solid black;
+        height:300px;
+        width:100℅;
+        position:relative;
+        margin:10px;
+        overflow:hidden;
+      }
+      #cano{
+        position: absolute;
+        bottom:0px;
+        height:50px;
+        width:40px;
+        animation:cano 4s infinite linear;
+      }
+      #mario{
+        height:40px;
+        position:absolute;
+        bottom:0px;
+      }
+      .pulo{
+        animation:pulo 700ms 1 linear;
+        
+      }
+      @Keyframes cano{
+        0%{
+          right:-40px;
+        }
+        100%{
+          right:100%;
+        }
+      }
+      @keyframes pulo {
+        0%{
+          bottom:0px;
+        }
+        60%{
+          bottom:70px;
+        }
+        100%{
+          bottom:0px;
+        }
+      }
     </style>
   </head>
   <body>
-    <h1>d</h1>
-    <img src="foto.jpeg">
-    <div>
-      
+    <div id="tela">
+      <img id="cano" src="cano.png">
+      <img id="mario" src="mario.gif">
     </div>
     <script>
-      
+      let tela = document.getElementsByTagName("body")
+      tela[0].addEventListener("click",pular)
+      function pular(){
+        let mario=document.getElementById("mario")
+        mario.classList.add("pulo")
+        setTimeout(remover,700)
+        function remover(){
+          mario.classList.remove("pulo")
+        }
+      }
     </script>
   </body>
 </html>
