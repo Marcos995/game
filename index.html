@@ -16,6 +16,11 @@
         position:relative;
         margin:10px;
         overflow:hidden;
+        border-bottom:5px solid green;
+        background-image: linear-gradient(to bottom, rgb(0,0,255),rgb(230, 242, 255));
+      }
+      #nuvem{
+        height:100px;
       }
       #cano{
         position: absolute;
@@ -58,16 +63,21 @@
     <div id="tela">
       <img id="cano" src="cano.png">
       <img id="mario" src="mario.gif">
+      <img id="nuvem" src="nuvem.png"
     </div>
     <script>
-      let tela = document.getElementsByTagName("body")
-      tela[0].addEventListener("click",pular)
+      let body = document.getElementsByTagName("body")
+      body[0].addEventListener("click",pular)
       function pular(){
         let mario=document.getElementById("mario")
         mario.classList.add("pulo")
+        body[0].removeEventListener("click",pular)
+        console.log(1)
         setTimeout(remover,700)
         function remover(){
+          console.log(2)
           mario.classList.remove("pulo")
+          body[0].addEventListener("click",pular)
         }
       }
     </script>
