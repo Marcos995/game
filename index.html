@@ -3,114 +3,23 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-      *{
-        margin:0px;
-        padding:0px;
-        box-sizing: border-box;
-        /*border:1px solid black;*/
-      }
-      #tela{
-        border:1px solid black;
-        height:300px;
-        width:100℅;
-        position:relative;
-        margin:10px;
-        overflow:hidden;
-        border-bottom:5px solid green;
-        background-image: linear-gradient(to bottom, rgb(0,0,255),rgb(230, 242, 255));
-        max-width:700px;
-      }
-      #nuvem{
-        height:110px;
-        width:300px;
-        margin-top:30px;
-        position:absolute;
-        animation:nuvem 17s infinite linear;
-      }
-      #cano{
-        position: absolute;
-        bottom:0px;
-        height:50px;
-        width:40px;
-        right:82%;
-        animation:cano 4s infinite linear;
-      }
-      #mario{
-        height:50px;
-        width:30px;
-        position:absolute;
-        bottom:0px;
-      }
-      #mario1{
-        height:50px;
-        width:30px;
-        position:absolute;
-        display:none;
-      }
-      .pulo{
-        animation:pulo 1000ms 1 linear;
-      }
-      #container{
-       display:none;
-       position:relative;
-       width: 50%;
-       height:100px;
-       left:50%;
-       top:50%;
-       transform:translate(-50%,-50%);
-       flex-direction:column;
-       justify-content:space-between;
-       background-image: linear-gradient(to bottom, rgb(0,0,255),rgb(230, 242, 255));
-      }
-      .align{
-        text-align: center;
-      }
-      @Keyframes cano{
-        0%{
-          right:-40px;
-        }
-        100%{
-          right:100%;
-        }
-      }
-      @keyframes pulo {
-        0%{
-          bottom:0px;
-        }
-        40%{
-          bottom:90px;
-        }
-        50%{
-          bottom:90px;
-        }
-        100%{
-          bottom:0px;
-        }
-      }
-      @keyframes nuvem {
-        0%{
-          right:-300px;
-        }
-        100%{
-          right:100%;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <div id="tela">
       <div id="score">pontos: 0</div>
-      <img id="cano" src="cano.png">
-      <img id="mario" src="mario.gif">
-      <img id="nuvem" src="nuvem.png">
-      <img id="mario1" src="mario1.png">
-      <audio id="som" src="mario-jump-sound.mp3"></audio>
+      <img id="cano" src="assets/cano.png">
+      <img id="mario" src="assets/mario.gif">
+      <img id="nuvem" src="assets/nuvem.png">
+      <img id="marioGO" src="assets/mario_game_over.png">
+      <audio id="som_pulo" src="assets/mario_jump_sound.mp3"></audio>
+      <audio id="som_game_over" src="assets/mario_game_over_sound.mp3"></audio>
+      <audio id="som_tema" src="assets/mario_theme_sound.mp3"></audio>
       <div id="container">
-        <div id="game-over" class="align">
+        <div id="game_over" class="align">
           GAME OVER
         </div>
-        <div id="pontos" class="align">
+        <div id="recorde" class="align">
           pontuação:
         </div>
         <div id="reiniciar" class="align">
@@ -119,60 +28,7 @@
       </div>
     </div>
     <p></p>
-    <script>
-      let body = document.getElementsByTagName("body")
-      let mario=document.getElementById("mario")
-      let p = document.getElementsByTagName("p")[0]
-      let container = document.getElementById("container")
-      let score = document.getElementById("score")
-      //evento para pular
-      body[0].addEventListener("click",pular)
-      function pular(){
-        mario.classList.add("pulo")
-        body[0].removeEventListener("click",pular)
-        setTimeout(remover,1000)
-        som.play()
-        function remover(){
-          mario.classList.remove("pulo")
-          body[0].addEventListener("click",pular)
-        }
-      }
-      //detectar colisão
-      setInterval(game,10)
-      function game(){
-        let canoRight =+getComputedStyle(cano).right.replace("px"," ")
-        let marioBottom=+getComputedStyle(mario).bottom.replace("px"," ")
-        let marioRight=+getComputedStyle(mario).right.replace("px"," ")
-        let canoWidth=+getComputedStyle(cano).width.replace("px"," ")
-        p.innerHTML = canoRight+" "+marioBottom
-        mario1.style.bottom=marioBottom+"px"
-        let mario1Bottom =+getComputedStyle(mario1).bottom.replace("px"," ")
-       /* console.log(mario1Right+" "+marioRight)*/
-        if(canoRight>marioRight-canoWidth && canoRight<marioRight && mario1Bottom<50){
-          p.innerHTML =canoRight+" "+marioBottom+" bateu"
-          cano.style.animation="none"
-          cano.style.right=canoRight+"px"
-          mario.style.animation="none"
-          mario.style.right=marioRight+"px"
-          container.style.display= "flex"
-          mario.style.bottom=marioBottom+"px"
-          mario1.style.bottom=marioBottom+"px"
-          mario1.style.display="block"
-          mario.style.display="none"
-          console.log(1)
-          body[0].removeEventListener("click",pular)
-        }
-        else{
-          x++
-          score.innerText = "pontos: "+x
-          pontos.innerText="pontuação: "+x
-        }
-      }
-      let x = 0
-      /*setInterval(teste,500)
-      function teste(){
-       console.log(getComputedStyle(mario1).bottom)
-      }*/
+    <script src="js/game.js">
     </script>
   </body>
 </html>
