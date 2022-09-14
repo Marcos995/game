@@ -1,9 +1,13 @@
 let body = document.getElementsByTagName("body")[0]
 let p = document.getElementsByTagName("p")[0]
+setTimeout(tocar,100)
+function tocar(){
+  som_tema.loop=true
+  som_tema.play()
+  console.log(1)
+}
 //evento para pular
 body.addEventListener("click",pular)
-som_tema.loop=true
-som_tema.play()
 function pular(){
   som_pulo.play()
   mario.classList.add("pulo")
