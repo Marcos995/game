@@ -2,6 +2,8 @@ let body = document.getElementsByTagName("body")[0]
 let p = document.getElementsByTagName("p")[0]
 //evento para pular
 body.addEventListener("click",pular)
+som_tema.loop=true
+som_tema.play()
 function pular(){
   som_pulo.play()
   mario.classList.add("pulo")
@@ -34,6 +36,7 @@ function game(){
     marioGO.style.display="block"
     mario.style.display="none"
     body.removeEventListener("click",pular)
+    som_tema.src=""
     som_game_over.play()
     som_game_over.addEventListener("ended",som)
     function som(){
