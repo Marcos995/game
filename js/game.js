@@ -26,6 +26,28 @@ function game1(){
   gameLoop()
   tocar()
 }
+  let c = 0
+  let a
+  let b
+  let r
+function recorde1(){
+  c++
+  if (c==1){
+    a = pontos
+    r = pontos
+ }
+  else{
+    b = pontos
+    if (a-b>0){
+    r=a
+  }
+ else{
+   a=b
+   r=b
+  }
+}
+recorde.innerText= "recorde: "+r
+}
 //detectar colisão
 function gameLoop(){
   let canoRight =+getComputedStyle(cano).right.replace("px"," ")
@@ -35,6 +57,7 @@ function gameLoop(){
   p.innerText = canoRight+" "+marioBottom
   let anima = requestAnimationFrame(gameLoop)
   if(canoRight>marioRight-canoWidth && canoRight<marioRight && marioBottom<50){
+    recorde1()
     body.removeEventListener("click",pular)
     mario.classList.remove("pulo")
     cano.style.animation="none"
@@ -53,7 +76,6 @@ function gameLoop(){
   else{
     pontos++
     score.innerText = "pontos: "+pontos
-    recorde.innerText="pontuação: "+pontos
   }
 }
 function tocar(){
