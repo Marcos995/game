@@ -47,12 +47,24 @@
        flex-direction:column;
        justify-content:space-between;
        background-image: linear-gradient(to bottom, rgb(0,0,255),rgb(230, 242, 255));
+       border:3px solid black;
+       border-radius:3px;
+      }
+      #reiniciar{
+        background-color:rgb(200,200,255);
+        border-radius:8px;
+        box-shadow:-3px 3px 3px;
+        border:1px solid black;
+      }
+      #score{
+        position:absolute;
       }
       .pulo{
         animation:pulo 1000ms 1 linear;
       }
       .align{
         text-align: center;
+        margin:5px;
       }
       @Keyframes cano{
         0%{
