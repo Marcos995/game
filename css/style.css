@@ -1,9 +1,9 @@
-      *{
+*{
         margin:0px;
         padding:0px;
         box-sizing: border-box;
       }
-      #tela{
+#tela{
         border:1px solid black;
         height:300px;
         width:auto;
@@ -14,7 +14,7 @@
         background-image: linear-gradient(to bottom, rgb(0,0,255),rgb(230, 242, 255));
         max-width:700px;
       }
-      #nuvem{
+#nuvem{
         height:110px;
         width:300px;
         right:-300px;
@@ -22,7 +22,7 @@
         position:absolute;
         animation:nuvem 17s infinite linear;
       }
-      #cano{
+#cano{
         position: absolute;
         bottom:0px;
         height:50px;
@@ -30,13 +30,13 @@
         right:-40px;
         animation:cano 4s infinite linear;
       }
-      #mario{
+#mario{
         height:50px;
         width:30px;
         position:absolute;
         bottom:0px;
       }
-      #container{
+#container{
        display:none;
        position:relative;
        width: 50%;
@@ -50,23 +50,23 @@
        border:3px solid black;
        border-radius:3px;
       }
-      #reiniciar{
+#reiniciar{
         background-color:rgb(200,200,255);
         border-radius:8px;
         box-shadow:-3px 3px 3px;
         border:1px solid black;
       }
-      #score{
+#score{
         position:absolute;
       }
-      .pulo{
+.pulo{
         animation:pulo 1000ms 1 linear;
       }
-      .align{
+.align{
         text-align: center;
         margin:5px;
       }
-      @Keyframes cano{
+@Keyframes cano{
         0%{
           right:-40px;
         }
@@ -74,7 +74,7 @@
           right:100%;
         }
       }
-      @keyframes pulo {
+@keyframes pulo {
         0%{
           bottom:0px;
         }
@@ -88,7 +88,7 @@
           bottom:0px;
         }
       }
-      @keyframes nuvem {
+@keyframes nuvem {
         0%{
           right:-300px;
         }

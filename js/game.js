@@ -1,4 +1,3 @@
-let body = document.getElementsByTagName("body")[0]
 let p = document.getElementsByTagName("p")[0]
 reiniciar.addEventListener("click",game)
 let pontos
@@ -16,7 +15,7 @@ function game(){
 }
 function game1(){
   mario.style.display="block"
-  body.addEventListener("click",pular)
+  document.addEventListener("click",pular)
   nuvem.style.animation=""
   som_pulo.src="assets/mario_jump_sound.mp3"
   som_game_over.src="assets/mario_game_over_sound.mp3"
@@ -58,7 +57,7 @@ function gameLoop(){
   let anima = requestAnimationFrame(gameLoop)
   if(canoRight>marioRight-canoWidth && canoRight<marioRight && marioBottom<50){
     recorde1()
-    body.removeEventListener("click",pular)
+    document.removeEventListener("click",pular)
     mario.classList.remove("pulo")
     cano.style.animation="none"
     cano.style.right=canoRight+"px"
@@ -70,7 +69,7 @@ function gameLoop(){
     som_pulo.src=""
     clearTimeout(k)
     som_game_over.play()
-    body.removeEventListener("click",pular)
+    document.removeEventListener("click",pular)
     cancelAnimationFrame(anima)
   }
   else{
@@ -83,15 +82,15 @@ function tocar(){
   som_tema.loop=true
 }
 //evento para pular
-body.addEventListener("click",pular)
+document.addEventListener("click",pular)
 let k
 function pular(){
   som_pulo.play()
   mario.classList.add("pulo")
-  body.removeEventListener("click",pular)
+  document.removeEventListener("click",pular)
   k =setTimeout(remover,1000)
   function remover(){
     mario.classList.remove("pulo")
-    body.addEventListener("click",pular)
+    document.addEventListener("click",pular)
    }
 }
