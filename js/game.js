@@ -1,30 +1,31 @@
-let p = document.getElementsByTagName("p")[0]
 reiniciar.addEventListener("click",game)
 let pontos
 game()
+//reiniciar game
 function game(){
   pontos=0
-  nuvem.style.animation="none"
-  cano.style.right="-40px"
+  cano.style.right=cano.style.right
   mario.style.bottom="0px"
-  mario.src="assets/mario.gif"
+  nuvem.style.animation="none"
   mario.style.display="none"
   container.style.display="none"
-  setTimeout(game1,100)
+  mario.src="assets/mario.gif"
   som_game_over.src=""
+  setTimeout(game1,100)
 }
 function game1(){
   mario.style.display="block"
   document.addEventListener("click",pular)
   nuvem.style.animation=""
+  cano.style.animation=""
+  container.display="none"
+  som_tema.src="assets/mario_theme_sound.mp3"
   som_pulo.src="assets/mario_jump_sound.mp3"
   som_game_over.src="assets/mario_game_over_sound.mp3"
-  cano.style.animation=""
-  container.display="none;"
-  som_tema.src="assets/mario_theme_sound.mp3"
   gameLoop()
   tocar()
 }
+//função recorde
   let c = 0
   let a
   let b
@@ -34,17 +35,17 @@ function recorde1(){
   if (c==1){
     a = pontos
     r = pontos
- }
+  }
   else{
     b = pontos
     if (a-b>0){
     r=a
-  }
+    }
  else{
    a=b
    r=b
+    }
   }
-}
 recorde.innerText= "recorde: "+r
 }
 //detectar colisão
@@ -53,9 +54,9 @@ function gameLoop(){
   let marioBottom=+getComputedStyle(mario).bottom.replace("px"," ")
   let marioRight=+getComputedStyle(mario).right.replace("px"," ")
   let canoWidth=+getComputedStyle(cano).width.replace("px"," ")
-  p.innerText = canoRight+" "+marioBottom
+  let marioWidth=+getComputedStyle(mario).width.replace("px"," ")
   let anima = requestAnimationFrame(gameLoop)
-  if(canoRight>marioRight-canoWidth && canoRight<marioRight && marioBottom<50){
+  if(canoRight>marioRight-canoWidth && canoRight<marioRight+marioWidth-10 && marioBottom<50){
     recorde1()
     document.removeEventListener("click",pular)
     mario.classList.remove("pulo")
